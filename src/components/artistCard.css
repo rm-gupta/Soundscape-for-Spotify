@@ -1,0 +1,30 @@
+/* Basic styling for the artist card */
+.artist-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s ease; /* Smooth hover effect */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensure content stays within bounds */
+  }
+  
+  .artist-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+  }
+  
+  /* Adjust the size of the artist image */
+  .artist-card img {
+    height: 200px; /* Set consistent height */
+    object-fit: cover; /* Keep the image proportions */
+    border-bottom: 2px solid #1DB954; /* Optional: Spotify green border */
+  }
+  
+  /* Center align text */
+  .artist-card .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .artist-card .card-text {
+    color: #666; /* Subtle color for additional stats */
+    font-size: 1rem;
+  }
+  

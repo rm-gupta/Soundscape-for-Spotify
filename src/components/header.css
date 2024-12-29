@@ -1,0 +1,56 @@
+/* Align logo and text horizontally */
+.brand-container {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+  }
+
+  /* Aligning the navigation links with the logo */
+  .header .container {
+    display: flex; /* Use Flexbox for alignment */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Space out the brand and navigation links */
+  }
+
+/* Style the logo */
+.brand-logo {
+    width: 60px; /* Control the width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 15px; /* Space between logo and text */
+    margin-left: 13px; /* Move the logo to the right */
+  }
+
+  /* Style the text */
+.brand-text {
+    color: #1DB954; /* Spotify green */
+    font-size: 1.4rem; /* Adjust size for balance */
+    letter-spacing: 1.7px; /* Add spacing for style */
+}
+body {
+    font-family: 'Quicksand', sans-serif; /* Font */
+  }
+
+.header {
+    background-color: #000;
+    position: sticky; /* sticks to the top when you scroll*/
+    margin-bottom: 2rem;
+  }
+
+  .nav-link {
+    color: #fff; /* White text */
+    font-size: 1.1rem; /* Adjust the size as needed */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth hover effect */
+    margin-right: 18px;
+  }
+  
+  .nav-link:hover {
+    color: #1DB954 !important; /* Spotify green color */
+    text-decoration: none;
+  }
+  
+  .navbar-brand {
+    color: #1DB954 !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+  }

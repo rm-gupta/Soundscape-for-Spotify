@@ -1,0 +1,72 @@
+.home-container {
+    background-color: black;
+    color: white;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 2rem;
+  }
+  
+  .button-container {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    text-decoration: none;
+  }
+  
+  .btn {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    background-color: green !important; 
+    text-decoration: none;
+    color: white !important;
+    
+  }
+
+  .charts-container,
+  .playlist-container,
+  .recentlyPlayed-container {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Vertically center items */
+    gap: 1rem; /* Add spacing between image and text */
+    margin-bottom: 2rem; /* Add spacing between rows */
+
+  }
+
+  /* Image styling */
+.charts-logo,
+.playlist-logo {
+  padding-top: 10rem;
+  width: 200px; /* Adjust image size */
+  height: 200px; /* Adjust image size */
+  object-fit: contain; /* Ensure the image fits well */
+}
+.recentlyPlayed-logo{
+    width: 120px; /* Adjust image size */
+    height: 120px; /* Adjust image size */
+    object-fit: contain; /* Ensure the image fits well */
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column; /* Stacking the heading and p vertically*/
+    text-align: center;
+}
+
+.text-content h4 {
+    font-size: 1.2rem; /* Adjust heading size */
+    margin: 0; /* Remove default margin */
+    text-align: center;
+    font-weight: 400;
+  }
+  
+  .text-content p {
+    font-size: 1rem; /* Adjust paragraph size */
+    margin-top: 0.5rem; /* Add spacing below the heading */
+    text-align: center;
+  }
+  
