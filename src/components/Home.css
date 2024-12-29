@@ -1,72 +1,84 @@
+/* Main container styling */
 .home-container {
     background-color: black;
     color: white;
-    height: 100vh; /* Full viewport height */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 2rem;
-  }
-  
-  .button-container {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    text-decoration: none;
-  }
-  
-  .btn {
-    font-size: 1.2rem;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    background-color: green !important; 
-    text-decoration: none;
-    color: white !important;
-    
-  }
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text within the container */
+    padding-top: 2rem; /* Add space at the top */
+    padding-left: 2rem; /* Add space on the left */
+    padding-right: 2rem; /* Add space on the right */
+}
 
-  .charts-container,
-  .playlist-container,
-  .recentlyPlayed-container {
-    display: flex; /* Align items horizontally */
-    align-items: center; /* Vertically center items */
-    gap: 1rem; /* Add spacing between image and text */
-    margin-bottom: 2rem; /* Add spacing between rows */
+/* Button container styling */
+.button-container {
+    margin-top: 2rem; /* Space above the button container */
+    display: flex; /* Arrange buttons horizontally */
+    gap: 1rem; /* Add space between buttons */
+    flex-wrap: wrap; /* Wrap buttons on smaller screens */
+    justify-content: center; /* Center the buttons */
+    padding-bottom: 4rem; /* Add space below buttons */
+}
 
-  }
+/* Button styling */
+.btn {
+    font-size: 1.2rem; /* Adjust button text size */
+    padding: 0.8rem 1.5rem; /* Add space inside buttons */
+    border-radius: 5px; /* Round button corners */
+    background-color: #1ED760 !important; /* Apply green background */
+    text-decoration: none; /* Remove underline from text */
+    color: white !important; /* Ensure text is white */
+}
 
-  /* Image styling */
+/* Section containers for charts, playlists, and recently played */
+.charts-container,
+.playlist-container,
+.recentlyPlayed-container {
+    display: flex; /* Arrange image and text horizontally */
+    align-items: center; /* Align image and text vertically */
+    justify-content: center; /* Center align the image and text */
+    gap: 2rem; /* Space between image and text */
+    margin-bottom: 2rem; /* Add space between rows */
+    width: 80%; /* Constrain container width */
+    transform: translateX(-3.25rem); 
+}
+
+/* Image styling for charts and playlists */
 .charts-logo,
 .playlist-logo {
-  padding-top: 10rem;
-  width: 200px; /* Adjust image size */
-  height: 200px; /* Adjust image size */
-  object-fit: contain; /* Ensure the image fits well */
+    width: 150px; /* Set image width */
+    height: 150px; /* Set image height */
+    object-fit: contain; /* Maintain aspect ratio */
 }
 .recentlyPlayed-logo{
-    width: 120px; /* Adjust image size */
-    height: 120px; /* Adjust image size */
-    object-fit: contain; /* Ensure the image fits well */
+    width: 170px; /* Set image width */
+    height: 170px; /* Set image height */
+    object-fit: contain; /* Maintain aspect ratio */
+    transform: translateX(-1.45rem); 
 }
 
+/* Text content container */
 .text-content {
-    display: flex;
-    flex-direction: column; /* Stacking the heading and p vertically*/
-    text-align: center;
+    display: flex; /* Arrange text content */
+    flex-direction: column; /* Stack heading and paragraph vertically */
+    justify-content: center; /* Center align text vertically */
+    align-items: center; /* Center align text horizontally */
+    text-align: center; /* Center the text itself */
 }
 
+/* Heading styling */
 .text-content h4 {
-    font-size: 1.2rem; /* Adjust heading size */
+    font-size: 1.4rem; /* Adjust heading size */
     margin: 0; /* Remove default margin */
-    text-align: center;
-    font-weight: 400;
-  }
-  
-  .text-content p {
+    font-weight: bold; /* Make heading bold */
+    text-align: center; /* Center align heading */
+}
+
+/* Paragraph styling */
+.text-content p {
     font-size: 1rem; /* Adjust paragraph size */
-    margin-top: 0.5rem; /* Add spacing below the heading */
-    text-align: center;
-  }
-  
+    margin-top: 0.5rem; /* Add space below the heading */
+    line-height: 1.5; /* Improve text readability */
+    text-align: center; /* Center align paragraph */
+}

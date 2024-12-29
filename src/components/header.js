@@ -36,6 +36,7 @@ export default function Header() {
         <Nav.Link href="/top-tracks">Top Tracks</Nav.Link>
         <Nav.Link href="/top-genres">Top Genres</Nav.Link>
         <Nav.Link href="/recently-played">Recently Played</Nav.Link>
+        <Nav.Link href="/account">Account</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Container>

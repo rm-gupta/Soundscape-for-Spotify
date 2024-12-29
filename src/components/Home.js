@@ -34,8 +34,8 @@ export default function Home() {
             />
             <div className="text-content">
                  <h4>Personalized Metrics</h4>
-                 <p>Explore your top artists, genres, and tracks across three 
-                    distinct timeframes, with data refreshed daily. 
+                 <p>Explore your top artists, genres, and tracks across <br />
+                    three distinct timeframes, with data refreshed daily. 
                  </p>
                 </div>
         </div>
@@ -48,8 +48,8 @@ export default function Home() {
             />  
             <div className="text-content">
                  <h4>Create Playlists</h4>
-                 <p>Generate a playlist from your personalized metrics and enjoy 
-                    it directly in the Spotify app. 
+                 <p>Generate a playlist from your personalized metrics <br />
+                    and enjoy it directly in the Spotify app. 
                  </p>
                 </div>
         </div>
@@ -61,7 +61,8 @@ export default function Home() {
             />
             <div className="text-content">
                  <h4>Recently Played Tracks</h4>
-                 <p> View tracks you've recently played with their timestamps.
+                 <p> View tracks you've recently played with their <br />
+                    timestamps.
                  </p>
                 </div>
         </div>
