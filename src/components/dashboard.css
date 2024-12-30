@@ -1,0 +1,56 @@
+.dashboard-container {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    text-decoration: none;
+  }
+  
+  .profile-section {
+    margin-bottom: 2rem;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .features-section {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .feature-card {
+    background-color: #1db954;
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.2s;
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.1);
+    background-color: #17a74a;
+  }
+
+  /* .logout-button {
+    margin-top: 20px; 
+    padding: 0.2rem 1.5rem; 
+    background-color: #d60000;
+    border-radius: 5px;
+    color: white; 
+    font-size: 1rem; 
+    outline: none; 
+    border: none; 
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold; 
+
+  } */
+  

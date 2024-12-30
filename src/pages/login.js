@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
-  const spotifyLoginUrl = 'http://localhost:3000/login'; // Replace with your backend URL
+  const navigate = useNavigate();
+  const [checkingSession, setCheckingSession] = useState(true); // State to track session check
+  const spotifyLoginUrl = 'http://localhost:5000/login'; // Replace with your backend URL
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      // Validate session with the backend
+      fetch(`http://localhost:5000/api/validate-session?userId=${userId}`)
+        .then((response) => {
+          if (response.ok) {
+            navigate('/dashboard'); // Redirect to dashboard if session is valid
+          } else {
+            console.warn('Invalid session. Staying on login page.');
+            localStorage.removeItem('userId'); // Clear invalid session
+          }
+        })
+        .catch((error) => console.error('Error validating session:', error))
+        .finally(() => setCheckingSession(false)); // Stop checking session
+    } else {
+      setCheckingSession(false); // No userId, show login page
+    }
+  }, [navigate]);
+
+  if (checkingSession) return <h1>Loading...</h1>;
 
   return (
     <div style={styles.container}>
@@ -38,10 +63,10 @@ const styles = {
     lineHeight: '1.6',
   },
   button: {
-    backgroundColor: '#1DB954',
+    backgroundColor: '#09a741',
     color: '#fff',
     padding: '0.8rem 1.5rem',
-    borderRadius: '30px',
+    borderRadius: '5px',
     textDecoration: 'none',
     fontSize: '1rem',
     fontWeight: 'bold',
