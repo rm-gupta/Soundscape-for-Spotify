@@ -55,30 +55,38 @@ export default function TopArtists() {
 
   return (
     //title to show the currently selected time range 
-    <div style = {{textAlign: 'center'}}>
+    <div className="top-artists-container">
       <h1> Your Top Artists ({rangeLabels[activeRange]})</h1>
 
       {/* tab buttons to switch between the time ranges */}
-      <div className="tab-buttons">
+      <div className="tabs">
         {Object.keys(rangeLabels).map((range) => (
           <button
             key={range}
             onClick={() => setActiveRange(range)}
-            className={`tab-button ${activeRange === range ? 'active' : ''}`}
+            className={activeRange === range ? 'active' : ''}
           >
-        {rangeLabels[range]}
-      </button>
-    ))}
-  </div>
+            {rangeLabels[range]}
+          </button>
+        ))}
+      </div>
 
 
         {/* get the artist list for the selected time range */}
         <ul className="top-artists-grid">
   {getArtists().map((artist, index) => (
-    <li key={artist.id} className="artist-card">
-      <img src={artist.images[0]?.url} alt={artist.name} />
-      <p>{index + 1}. {artist.name}</p>
-    </li>
+      <a
+        key={artist.id}
+        href={artist.external_urls.spotify}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="artist-card-link"
+      >
+        <li className="artist-card">
+          <img src={artist.images[0]?.url} alt={artist.name} />
+          <p>{index + 1}. {artist.name}</p>
+        </li>
+    </a>
   ))}
 </ul>
     </div>

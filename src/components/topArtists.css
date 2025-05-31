@@ -64,3 +64,9 @@
   border-radius: 10px;
   margin-bottom: 0.5rem;
 }
+
+.artist-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

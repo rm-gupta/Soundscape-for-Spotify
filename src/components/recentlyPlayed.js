@@ -43,10 +43,14 @@ export default function RecentlyPlayed() {
                         const playedAt = new Date(item.played_at).toLocaleString(); //format played time
 
                         return (
-                            <tr key = {track.id + idx}>
-                                <td>{track.name}</td>
-                                <td>{track.artists.map(a => a.name).join(', ')} </td> {/* extract artist names */}
-                                <td>{playedAt} </td>
+                            <tr
+                            key={track.id + idx}
+                            onClick={() => window.open(track.external_urls.spotify, '_blank')}
+                            style={{ cursor: 'pointer' }}
+                            >
+                            <td>{track.name}</td>
+                            <td>{track.artists.map(a => a.name).join(', ')}</td>
+                            <td>{playedAt}</td>
                             </tr>
                         );
                     })}

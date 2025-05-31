@@ -76,17 +76,24 @@ const rangeLabels = {
         {getTracks().map((track, index) => (
           <li key={track.id} className="track-item">
             <span className="rank">{index + 1}</span> {/* Track rank */}
-            <img
-              src={track.album.images[0]?.url}
-              alt={track.name}
-              className="track-img"
-            />
+            <a
+              href={track.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="track-link"
+            >
+              <img
+                src={track.album.images[0]?.url}
+                alt={track.name}
+                className="track-img"
+              />
             <div className="track-info">
-              <div className="track-name">{track.name}</div> {/* Song title */}
+              <div className="track-name">{track.name}</div>
               <div className="track-artist">
-                {track.artists.map((artist) => artist.name).join(', ')} {/* Artists */}
-              </div>
+              {track.artists.map((artist) => artist.name).join(', ')}
             </div>
+          </div>
+        </a>
           </li>
         ))}
       </ol>

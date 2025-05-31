@@ -38,6 +38,7 @@
     gap: 1rem;
     padding: 0.75rem 0;
     border-bottom: 1px solid #333;
+    text-decoration: none;
   }
   
   .track-img {
@@ -45,12 +46,15 @@
     height: 60px;
     object-fit: cover;
     border-radius: 5px;
+    margin-right: 1rem; /* ADD THIS */
   }
   
   .track-info {
     flex: 1;
     text-align: left;
+    padding-left: 0.5rem; /* add extra spacing after adding linking capability*/
   }
+  
   
   .track-name {
     font-weight: bold;
@@ -68,4 +72,12 @@
     color: #1db954;
     text-align: right;
   }
+  .track-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%; /*makes the full row clickable */
+  }
+
   
