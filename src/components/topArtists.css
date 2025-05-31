@@ -16,3 +16,32 @@
     border-color: #1DB954; /* Match border to tab color */
   }
   
+  .top-artists-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* three rows*/
+    gap: 2rem;
+    padding: 0; 
+    list-style: none;
+    margin: 2rem auto; 
+    max-width: 1000px;
+    justify-items: center;
+
+  }
+
+  .artist-card {
+    background-color: #121212;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    color: white;
+  }
+
+  /* Artist image */
+.artist-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}

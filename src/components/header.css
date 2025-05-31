@@ -24,6 +24,9 @@
     color: #1DB954; /* Spotify green */
     font-size: 1.4rem; /* Adjust size for balance */
     letter-spacing: 1.7px; /* Add spacing for style */
+    font-weight: bold;
+
+    
 }
 body {
     font-family: 'Quicksand', sans-serif; /* Font */
@@ -33,6 +36,7 @@ body {
     background-color: #000;
     position: sticky; /* sticks to the top when you scroll*/
     margin-bottom: 2rem;
+        font-weight: bold;
   }
 
   .nav-link {

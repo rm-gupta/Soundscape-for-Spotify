@@ -1,0 +1,71 @@
+.top-tracks-container {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .tabs button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #aaa;
+  }
+  
+  .tabs .active {
+    border-bottom: 2px solid #1db954;
+    color: #fff;
+  }
+  
+  .track-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  
+  .track-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+  }
+  
+  .track-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .track-info {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .track-name {
+    font-weight: bold;
+    color: white;
+  }
+  
+  .track-artist {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  .rank {
+    width: 24px;
+    font-weight: bold;
+    color: #1db954;
+    text-align: right;
+  }
+  

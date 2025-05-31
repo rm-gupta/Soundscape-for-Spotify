@@ -14,9 +14,10 @@
 /* Button container styling */
 .button-container {
     margin-top: 2rem; /* Space above the button container */
-    display: flex; /* Arrange buttons horizontally */
+    display: flex; /* Arrange buttons using flexbox */
+    flex-direction: row; /* Align buttons horizontally */
     gap: 1rem; /* Add space between buttons */
-    flex-wrap: wrap; /* Wrap buttons on smaller screens */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
     justify-content: center; /* Center the buttons */
     padding-bottom: 4rem; /* Add space below buttons */
 }
@@ -26,7 +27,7 @@
     font-size: 1.2rem; /* Adjust button text size */
     padding: 0.8rem 1.5rem; /* Add space inside buttons */
     border-radius: 5px; /* Round button corners */
-    background-color: green!important; /* Apply green background */
+    background-color: #1db954!important; /* Apply green background */
     text-decoration: none; /* Remove underline from text */
     color: white !important; /* Ensure text is white */
 }

@@ -23,6 +23,14 @@
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  .button-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center align the buttons */
+    margin-top: 20px; /* Add some space from the above content */
+  }
+  
   
   .feature-card {
     background-color: #1db954;
@@ -40,17 +48,40 @@
     background-color: #17a74a;
   }
 
-  /* .logout-button {
-    margin-top: 20px; 
-    padding: 0.2rem 1.5rem; 
-    background-color: #d60000;
+  .spotify-profile-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1db954;
+    color: white;
+    border: none;
     border-radius: 5px;
-    color: white; 
-    font-size: 1rem; 
-    outline: none; 
-    border: none; 
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bold; 
-
-  } */
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    font-family: 'Quicksand', sans-serif; /* Font */
+  }
   
+  .spotify-profile-link:hover {
+    background-color: #148f3e;
+  }
+  
+  .logout-button {
+    margin-top: 10px; /* Adds spacing below the Spotify profile link */
+    padding: 10px 20px;
+    background-color: #d60000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    font-family: 'Quicksand', sans-serif; /* Font */
+  }
+  
+  .logout-button:hover {
+    background-color: #b80000;
+  }

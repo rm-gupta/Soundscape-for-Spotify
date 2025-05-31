@@ -1,66 +1,94 @@
 import React, { useEffect, useState } from 'react';
+import './topArtists.css';
+
 
 export default function TopArtists() {
   const [shortTerm, setShortTerm] = useState([]);
   const [mediumTerm, setMediumTerm] = useState([]);
   const [longTerm, setLongTerm] = useState([]);
+  //hold the currently selected time range 
+  const [activeRange, setActiveRange] = useState('short_term')
 
   useEffect(() => {
-    async function fetchTopArtists(timeRange, setter) {
+    //fetch top artists for a specific time range 
+    async function fetchTopArtists(timeRange, setter, limit) {
       const userId = localStorage.getItem('userId'); // Get the user ID
       try {
-        const response = await fetch(`http://localhost:5000/api/top-artists?userId=${userId}&time_range=${timeRange}&limit=10`);
+        //call backend with time range and user ID 
+        const response = await fetch(`http://localhost:5001/api/top-artists?userId=${userId}&time_range=${timeRange}&limit=${limit}`
+        );
+        //fix to error handling 
+        if(!response.ok){
+          const errorText = await response.text(); 
+          throw new Error(errorText);
+        }
+        
         const data = await response.json();
+        console.log('Data for ${timeRange}:', data);
         setter(data.items); // Set the fetched data to the corresponding state
       } catch (error) {
         console.error(`Error fetching top artists for ${timeRange}:`, error);
       }
-    }
+    } 
 
-    fetchTopArtists('short_term', setShortTerm); // Last 4 weeks
-    fetchTopArtists('medium_term', setMediumTerm); // Last 6 months
-    fetchTopArtists('long_term', setLongTerm); // All time
+    fetchTopArtists('short_term', setShortTerm, 15); // Last 4 weeks
+    fetchTopArtists('medium_term', setMediumTerm, 50); // Last 6 months
+    fetchTopArtists('long_term', setLongTerm, 50); // All time
   }, []);
 
+  //pick the correct artist list based on what tab is selected 
+  const getArtists = () => {
+    switch(activeRange) {
+      case 'short_term': return shortTerm; 
+      case 'medium_term': return mediumTerm; 
+      case 'long_term': return longTerm; 
+      default: return []; 
+    }
+  };
+
+  //mapping to show readable labels 
+  const rangeLabels = {
+    short_term: 'last 4 weeks',
+    medium_term: 'last 6 months', 
+    long_term: 'last 12 months'
+  }; 
+
   return (
-    <div>
-      <h1>Your Top Artists</h1>
+    //title to show the currently selected time range 
+    <div style = {{textAlign: 'center'}}>
+      <h1> Your Top Artists ({rangeLabels[activeRange]})</h1>
 
-      <section>
-        <h2>Short-Term (Last 4 Weeks)</h2>
-        <ul>
-          {shortTerm.map((artist) => (
-            <li key={artist.id}>
-              <img src={artist.images[0]?.url} alt={artist.name} style={{ width: 50, height: 50 }} />
-              <p>{artist.name}</p>
-            </li>
+      {/* tab buttons to switch between the time ranges */}
+      <div style = {{ display: 'flex', justifyContent: 'center', gap: '1rem', 
+        marginBottom: '2rem'}}>
+          {/* renders 3 buttons, one for each time range*/}
+          {Object.keys(rangeLabels).map((range) => (
+              <button
+                key = {range}
+                onClick = {() => setActiveRange(range)} //update range when clicked
+                style = {{
+                  padding: '0.5rem 1rem',
+                  borderBottom: activeRange === range ? '2px solid white' : 'none', // Highlight active tab
+                  background: 'none',
+                  color: 'white',
+                  fontWeight: activeRange === range ? 'bold' : 'normal',
+                  cursor: 'pointer',
+                }}
+              >
+                {rangeLabels[range]} {/* show label text */}
+              </button>
           ))}
-        </ul>
-      </section>
-
-      <section>
-        <h2>Medium-Term (Last 6 Months)</h2>
-        <ul>
-          {mediumTerm.map((artist) => (
-            <li key={artist.id}>
-              <img src={artist.images[0]?.url} alt={artist.name} style={{ width: 50, height: 50 }} />
-              <p>{artist.name}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section>
-        <h2>Long-Term (All Time)</h2>
-        <ul>
-          {longTerm.map((artist) => (
-            <li key={artist.id}>
-              <img src={artist.images[0]?.url} alt={artist.name} style={{ width: 50, height: 50 }} />
-              <p>{artist.name}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
     </div>
-  );
+
+        {/* get the artist list for the selected time range */}
+        <ul className="top-artists-grid">
+  {getArtists().map((artist, index) => (
+    <li key={artist.id} className="artist-card">
+      <img src={artist.images[0]?.url} alt={artist.name} />
+      <p>{index + 1}. {artist.name}</p>
+    </li>
+  ))}
+</ul>
+    </div>
+  ); 
 }

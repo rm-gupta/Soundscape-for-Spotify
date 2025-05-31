@@ -10,7 +10,7 @@ dotenv.config(); // Load environment variables from .env
 const client_id = process.env.CLIENT_ID;
 const redirect_uri = process.env.REDIRECT_URI;
 const client_secret = process.env.CLIENT_SECRET;
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 const userTokens = {}; // In-memory storage for user tokens
 
 const app = express();
@@ -30,7 +30,7 @@ app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state); // Store the state in a cookie for validation
 
-  const scope = 'user-read-private user-read-email';
+  const scope = 'user-top-read user-read-email user-read-private';
 
   res.redirect(
     'https://accounts.spotify.com/authorize?' +
@@ -103,6 +103,87 @@ app.get('/callback', async (req, res) => {
     res.redirect('/#error=invalid_token');
   }
 });
+
+//top artist route 
+app.get('/api/top-artists', async (req, res) => {
+  //get the parameters from the query 
+  const {userId, time_range, limit} = req.query; 
+  //see if we have a token stored for the user 
+  if(!userTokens[userId]){
+    return res.status(401).send('User not logged in');
+  }
+
+  try{
+  //refresh or get valid access token for spotify 
+  console.log(`Fetching top artists for userId: ${userId}, range: ${time_range}`);
+  console.log('Tokens:', userTokens[userId]);
+  const access_token = await getAccessToken(userId); 
+
+  //make request to Spotify's top artists endpoint 
+  const response = await axios.get('https://api.spotify.com/v1/me/top/artists', 
+    {headers: {
+      Authorization: `Bearer ${access_token}`
+    },
+    params: {
+      time_range, 
+      limit //how many artists to return, limit is 10 
+    }
+}); 
+
+  //return data back to the frontend 
+  res.json({items: response.data.items});
+
+} catch (error) {
+  //if something goes wrong, log error and send 500 response 
+  console.error('Error fetching top artists:', error.response?.data || error.message);
+  res.status(500).json({ error: error.response?.data || error.message });
+  
+}
+}); 
+
+//topTracks route
+// topTracks route
+app.get('/api/top-tracks', async (req, res) => {
+  // get the parameters from the request 
+  const { userId, time_range, limit } = req.query;
+
+  // see if there's a token for the user already 
+  if (!userTokens[userId]) {
+    return res.status(401).send('User not logged in');
+  }
+
+  try {
+    // get an access token for the user 
+    const access_token = await getAccessToken(userId);
+
+    // log for debugging 
+    console.log(`Fetching top tracks for userId: ${userId}, range: ${time_range}`);
+    console.log('Tokens:', userTokens[userId]);
+
+    // request to Spotify API for top tracks 
+    const response = await axios.get('https://api.spotify.com/v1/me/top/tracks', {
+      headers: {
+        Authorization: `Bearer ${access_token}` // attach access token
+      },
+      params: {
+        time_range, // short_term, medium_term, long_term
+        limit       // how many tracks to fetch
+      }
+    });
+
+    // return data to front end 
+    res.json({ items: response.data.items });
+
+  } catch (error) {
+    // log error details 
+    console.error('Error fetching top tracks', error.response?.data || error.message);
+
+    // show server error 
+    res.status(500).send('Failed to fetch top tracks');
+  }
+});
+
+
 
 // Refresh Token Logic
 async function getAccessToken(userId) {

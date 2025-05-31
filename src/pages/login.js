@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 export default function LoginPage() {
   const navigate = useNavigate();
   const [checkingSession, setCheckingSession] = useState(true); // State to track session check
-  const spotifyLoginUrl = 'http://localhost:5000/login'; // Replace with your backend URL
+  const spotifyLoginUrl = 'http://localhost:5001/login'; // Replace with your backend URL
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     if (userId) {
       // Validate session with the backend
-      fetch(`http://localhost:5000/api/validate-session?userId=${userId}`)
+      fetch(`http://localhost:5001/api/validate-session?userId=${userId}`)
         .then((response) => {
           if (response.ok) {
             navigate('/dashboard'); // Redirect to dashboard if session is valid

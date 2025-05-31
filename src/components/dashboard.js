@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './dashboard.css';
 
 export default function Dashboard() {
   const [profile, setProfile] = useState(null); // State for user profile
   const [error, setError] = useState(null); // State for error handling
   const location = useLocation();
+  const navigate = useNavigate(); // For navigation on logout
+
+  // Logout handler
+  const handleLogout = () => {
+    localStorage.clear(); // Clear stored user data
+    navigate('/account'); // Redirect to login page
+  };
 
   useEffect(() => {
     // Extract userId from the URL
@@ -24,7 +31,7 @@ export default function Dashboard() {
       }
 
       try {
-        const response = await fetch(`http://localhost:5000/api/me?userId=${storedUserId}`);
+        const response = await fetch(`http://localhost:5001/api/me?userId=${storedUserId}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch profile: ${response.statusText}`);
         }
@@ -50,17 +57,34 @@ export default function Dashboard() {
 
   // Render user profile
   return (
-    <div className="dashboard-container">
-      <div className="profile-section">
-        <img src={profile.images[0]?.url || '/default-avatar.png'} alt="Profile" className="profile-image" />
-        <h1>Welcome, {profile.display_name}!</h1>
-        <p>Email: {profile.email}</p>
-        <p>Account Type: {profile.product}</p>
-        <p>Total Followers: {profile.followers?.total || 0}</p>
-        <a href={profile.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-          View Spotify Profile
-        </a>
-      </div>
+<div className="dashboard-container">
+  <div className="profile-section">
+    <img
+      src={profile.images[0]?.url || '/default-avatar.png'}
+      alt="Profile"
+      className="profile-image"
+    />
+    <h1>Welcome, {profile.display_name}!</h1>
+    <p>Email: {profile.email}</p>
+    <p>Account Type: {profile.product}</p>
+    <p>Total Followers: {profile.followers?.total || 0}</p>
+
+    {/* Button container */}
+    <div className="button-container">
+      <a
+        href={profile.external_urls.spotify}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="spotify-profile-link"
+      >
+        View Spotify Profile
+      </a>
+      <button className="logout-button" onClick={handleLogout}>
+        Log Out
+      </button>
     </div>
+  </div>
+</div>
   );
+  
 }
