@@ -8,6 +8,7 @@ import TopArtists from './components/TopArtists';
 import TopTracks from './components/TopTracks';
 import RecentlyPlayed from './components/RecentlyPlayed'; 
 import TopGenres from './components/TopGenres'; 
+import CallbackHandler from './components/CallbackHandler';
 import ArtistCard from './components/artistCard';
 
 
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/recently-played" element={<RecentlyPlayed />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/account" element={<LoginPage />} />
+        <Route path="/callback" element={<CallbackHandler />} />
       </Routes>
     </Router>
   );
