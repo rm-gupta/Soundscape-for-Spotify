@@ -30,7 +30,7 @@ app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state); // Store the state in a cookie for validation
 
-  const scope = 'user-top-read user-read-email user-read-private';
+  const scope = 'user-top-read user-read-email user-read-private user-read-recently-played';
 
   res.redirect(
     'https://accounts.spotify.com/authorize?' +
@@ -183,6 +183,36 @@ app.get('/api/top-tracks', async (req, res) => {
   }
 });
 
+//recently played route
+app.get('/api/recently-played', async (req, res) => {
+  const {userId} = req.query; 
+
+  //if the user isn't logged in 
+  if(!userTokens[userId]){
+    return res.status(401).send('User not logged in');
+  }
+
+  try{
+    // get an access token for the user 
+    const access_token = await getAccessToken(userId); 
+
+    // request to Spotify API for recently played tracks 
+    const response = await axios.get('https://api.spotify.com/v1/me/player/recently-played', {
+      headers: {
+        Authorization: `Bearer ${access_token}` // attach access token
+      },
+      params: {
+        limit: 50 //max is 50
+      }
+    });
+
+    // return data to front end 
+    res.json({ items: response.data.items });
+  } catch (error){
+      console.error('Error fetching recently played:', error.response?.data || error.message);
+      res.status(500).send('Failed to fetch recently played tracks');
+  }
+}); 
 
 
 // Refresh Token Logic

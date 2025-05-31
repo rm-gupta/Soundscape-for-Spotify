@@ -1,0 +1,21 @@
+.recently-played-container {
+    padding: 2rem;
+    color: white;
+    text-align: center;
+  }
+  
+  .recently-played-table {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    color: white;
+  }
+  
+  .recently-played-table th,
+  .recently-played-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #444;
+  }
+  

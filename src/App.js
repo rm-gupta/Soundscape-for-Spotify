@@ -6,6 +6,7 @@ import LoginPage from './pages/login';
 import Dashboard from './components/dashboard'; 
 import TopArtists from './components/TopArtists'; 
 import TopTracks from './components/TopTracks';
+import RecentlyPlayed from './components/RecentlyPlayed'; 
 import ArtistCard from './components/artistCard';
 
 
@@ -18,7 +19,7 @@ export default function App() {
         <Route path="/Top-artists" element={<TopArtists />} />
         <Route path="/Top-tracks" element={<TopTracks/>} />
         <Route path="/top-genres" element={<h1>Top Genres </h1>} />
-        <Route path="/recently-played" element={<h1>Recently Played </h1>} />
+        <Route path="/recently-played" element={<RecentlyPlayed />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/account" element={<LoginPage />} />
       </Routes>
