@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const crypto = require('crypto');
 const axios = require('axios');
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 dotenv.config(); // Load environment variables from .env
 
