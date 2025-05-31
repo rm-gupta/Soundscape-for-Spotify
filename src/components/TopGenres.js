@@ -9,7 +9,7 @@ export default function TopGenres() {
     useEffect(() => {
         const userId = localStorage.getItem('userId'); 
         async function fetchGenres(){
-            const res = await fetch(`http://localhost:5001/api/top-genres?userId=${userId}&time_range=${activeRange}`);
+            const res = await fetch(`https://soundscape-backend-tc9o.onrender.com/api/top-genres?userId=${userId}&time_range=${activeRange}`);
             const data = await res.json(); 
             setGenres(data.items || []); 
         }

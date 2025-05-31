@@ -12,7 +12,7 @@ export default function RecentlyPlayed() {
         async function fetchRecentlyPlayed(){
             try{
             //GET request to backend API with the userID
-            const res = await fetch(`http://localhost:5001/api/recently-played?userId=${userId}`); 
+            const res = await fetch(`https://soundscape-backend-tc9o.onrender.com/api/recently-played?userId=${userId}`); 
             //parsing through the JSON response 
             const data = await res.json(); 
             console.log("Recently Played Response:", data);

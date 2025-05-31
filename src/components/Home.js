@@ -32,7 +32,7 @@ export default function Home() {
           </>
         ) : (
           <a
-            href="http://localhost:5001/login" // replace with your login endpoint
+            href="https://soundscape-backend-tc9o.onrender.com/login" // replace with your login endpoint
             className="btn btn-success"
           >
             Login with Spotify

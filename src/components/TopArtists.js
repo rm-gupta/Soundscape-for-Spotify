@@ -15,7 +15,7 @@ export default function TopArtists() {
       const userId = localStorage.getItem('userId'); // Get the user ID
       try {
         //call backend with time range and user ID 
-        const response = await fetch(`http://localhost:5001/api/top-artists?userId=${userId}&time_range=${timeRange}&limit=${limit}`
+        const response = await fetch(`https://soundscape-backend-tc9o.onrender.com/api/top-artists?userId=${userId}&time_range=${timeRange}&limit=${limit}`
         );
         //fix to error handling 
         if(!response.ok){

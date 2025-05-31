@@ -19,7 +19,7 @@ export default function TopTracks(){
         async function fetchTopTracks(timeRange, setter){
            try{
             const response = await fetch(
-                `http://localhost:5001/api/top-tracks?userId=${userId}&time_range=${timeRange}&limit=50`
+                `https://soundscape-backend-tc9o.onrender.com/api/top-tracks?userId=${userId}&time_range=${timeRange}&limit=50`
               );
             const data = await response.json(); 
             setter(data.items);

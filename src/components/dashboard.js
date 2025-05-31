@@ -31,7 +31,7 @@ export default function Dashboard() {
       }
 
       try {
-        const response = await fetch(`http://localhost:5001/api/me?userId=${storedUserId}`);
+        const response = await fetch(`https://soundscape-backend-tc9o.onrender.com/api/me?userId=${storedUserId}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch profile: ${response.statusText}`);
         }
