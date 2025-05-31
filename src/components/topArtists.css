@@ -1,44 +1,63 @@
-/* TopArtists container styling */
+/* Container styling */
 .top-artists-container {
-    padding: 2rem 1rem;
-    text-align: center;
-  }
-  
-  /* Tabs styling */
-  .nav-tabs .nav-link {
-    font-weight: bold;
-    color: #000; /* Black text for tabs */
-  }
-  
-  .nav-tabs .nav-link.active {
-    background-color: #1DB954; /* Spotify green for active tab */
-    color: #fff; /* White text for active tab */
-    border-color: #1DB954; /* Match border to tab color */
-  }
-  
-  .top-artists-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* three rows*/
-    gap: 2rem;
-    padding: 0; 
-    list-style: none;
-    margin: 2rem auto; 
-    max-width: 1000px;
-    justify-items: center;
+  padding: 2rem 1rem;
+  text-align: center;
+}
 
-  }
+/* Updated Tab Button Styling */
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
 
-  .artist-card {
-    background-color: #121212;
-    border-radius: 10px;
-    padding: 1rem;
-    width: 100%;
-    max-width: 250px;
-    text-align: center;
-    color: white;
-  }
+.tab-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s, color 0.3s;
+}
 
-  /* Artist image */
+.tab-button:hover {
+  border-color: #1DB954;
+}
+
+.tab-button.active {
+  font-weight: bold;
+  border-bottom: 2px solid #1DB954; /* Spotify green underline */
+  color: #1DB954;
+}
+
+/* Grid layout for artist cards */
+.top-artists-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 2rem;
+  padding: 0;
+  list-style: none;
+  margin: 2rem auto;
+  max-width: 1000px;
+  justify-items: center;
+}
+
+/* Individual artist card styling */
+.artist-card {
+  background-color: #121212;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+  color: white;
+}
+
+/* Artist image styling */
 .artist-card img {
   width: 100%;
   height: auto;

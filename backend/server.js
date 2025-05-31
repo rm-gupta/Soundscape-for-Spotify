@@ -214,6 +214,59 @@ app.get('/api/recently-played', async (req, res) => {
   }
 }); 
 
+//top genre route 
+app.get('/api/top-genres', async (req, res) => {
+  const {userId, time_range = 'short_term', limit = 50} = req.query; 
+
+  //if the user isn't logged in 
+  if(!userTokens[userId]){
+    return res.status(401).send('User not logged in');
+  }
+
+  try{
+    // get an access token for the user 
+    const access_token = await getAccessToken(userId); 
+
+    // request to Spotify API for recently played tracks 
+    const response = await axios.get('https://api.spotify.com/v1/me/top/artists', {
+      headers: {
+        Authorization: `Bearer ${access_token}` // attach access token
+      },
+      params: {
+        time_range, 
+        limit
+      }
+    });
+
+    // return data to front end 
+    const artists = response.data.items; 
+
+    //flatten and count genres 
+    const genreCount = {}; 
+    artists.forEach(artist => {
+      artist.genres.forEach(genre => {
+        //if genre exists, add 1, else initialize 
+        genreCount[genre] = (genreCount[genre] || 0) + 1;
+      });
+      
+    });
+    //convert into a sorted array 
+    const sortedGenres = Object.entries(genreCount)
+      .sort((a, b) => b[1] - a[1]) //sort by count descending 
+      .map(([genre, count], index) => ({
+        rank: index + 1, //add ranking 
+        genre,
+        count
+    }));
+    //return the result to the front end 
+    res.json({ items: sortedGenres });
+    
+  } catch (error){
+      console.error('Error fetching recently played:', error.response?.data || error.message);
+      res.status(500).send('Failed to fetch recently played tracks');
+  }
+}); 
+
 
 // Refresh Token Logic
 async function getAccessToken(userId) {

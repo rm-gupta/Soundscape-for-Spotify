@@ -59,26 +59,18 @@ export default function TopArtists() {
       <h1> Your Top Artists ({rangeLabels[activeRange]})</h1>
 
       {/* tab buttons to switch between the time ranges */}
-      <div style = {{ display: 'flex', justifyContent: 'center', gap: '1rem', 
-        marginBottom: '2rem'}}>
-          {/* renders 3 buttons, one for each time range*/}
-          {Object.keys(rangeLabels).map((range) => (
-              <button
-                key = {range}
-                onClick = {() => setActiveRange(range)} //update range when clicked
-                style = {{
-                  padding: '0.5rem 1rem',
-                  borderBottom: activeRange === range ? '2px solid white' : 'none', // Highlight active tab
-                  background: 'none',
-                  color: 'white',
-                  fontWeight: activeRange === range ? 'bold' : 'normal',
-                  cursor: 'pointer',
-                }}
-              >
-                {rangeLabels[range]} {/* show label text */}
-              </button>
-          ))}
-    </div>
+      <div className="tab-buttons">
+        {Object.keys(rangeLabels).map((range) => (
+          <button
+            key={range}
+            onClick={() => setActiveRange(range)}
+            className={`tab-button ${activeRange === range ? 'active' : ''}`}
+          >
+        {rangeLabels[range]}
+      </button>
+    ))}
+  </div>
+
 
         {/* get the artist list for the selected time range */}
         <ul className="top-artists-grid">
