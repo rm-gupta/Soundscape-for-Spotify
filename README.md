@@ -1,6 +1,6 @@
 # Soundscape of Spotify
 
-**Soundscape** is a personal Spotify stats dashboard built with React. It lets you explore your top tracks, artists, and genres across different time ranges — last 4 weeks, last 6 months, and all time. You can also view your recently played songs complete with timestamps.
+**Soundscape of Spotify** is a personal Spotify stats dashboard built with React. It lets you explore your top tracks, artists, and genres across different time ranges (last 4 weeks, last 6 months, and last 12 months). You can also view your recently played songs complete with timestamps.
 
 It's like your own Spotify Wrapped, but available anytime.
 
