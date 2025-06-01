@@ -18,7 +18,7 @@ const app = express();
 const cors = require('cors');
 //app.use(cors());
 app.use(cors({
-  origin: 'https://soundscape-for-spotify-2t6x.vercel.app',
+  origin: 'https://soundscape-for-spotify.vercel.app',
   credentials: true
 }))
 app.use(cookieParser());
@@ -102,7 +102,7 @@ app.get('/callback', async (req, res) => {
     console.log(`Tokens stored for user: ${userId}`, userTokens[userId]);
 
     // Redirect to the dashboard with userId as a query parameter
-    res.redirect(`https://soundscape-for-spotify-2t6x.vercel.app/dashboard?userId=${userId}`);
+    res.redirect(`https://soundscape-for-spotify.vercel.app/dashboard?userId=${userId}`);
   } catch (error) {
     console.error('Error during token exchange or profile fetch:', error.response?.data || error.message);
     res.redirect('/#error=invalid_token');
