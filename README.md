@@ -15,6 +15,7 @@ It's like your own Spotify Wrapped, but available anytime.
 You'll need to log in with your Spotify account to see your personalized data. All information is pulled directly from Spotify’s Web API.
 
 You can try it here: https://soundscape-for-spotify.vercel.app
+NOTE: The app in Spotify dashboard is still in development mode, must be manually added atm
 
 Backend @ https://soundscape-backend-tc9o.onrender.com
 https://dashboard.render.com/web/srv-d0tmnaadbo4c739s0sbg
