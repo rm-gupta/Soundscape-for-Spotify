@@ -21,5 +21,6 @@ NOTE: The app in Spotify dashboard is still in development mode, must be manuall
 Backend @ https://soundscape-backend-tc9o.onrender.com
 https://dashboard.render.com/web/srv-d0tmnaadbo4c739s0sbg
 
-👉 [Click here to watch the demo video](media/demo.mov)
+ [🎥 Watch the demo video](https://github.com/rm-gupta/Soundscape-for-Spotify/raw/main/media/My%20Movie.MOV)
+
 
